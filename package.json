@@ -1,0 +1,73 @@
+{
+  "name": "electron-react-typescript-typeorm-sample",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "compile": "electron-webpack",
+    "dev": "electron-webpack dev",
+    "build": "npm run compile && electron-builder",
+    "postinstall": "install-app-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gugumian/electron-react-typescript-typeorm-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gugumian/electron-react-typescript-typeorm-sample/issues"
+  },
+  "homepage": "https://github.com/gugumian/electron-react-typescript-typeorm-sample#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@types/node": "^12.11.7",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "electron": "^6.0.0",
+    "electron-builder": "^21.2.0",
+    "electron-webpack": "^2.7.4",
+    "electron-webpack-ts": "^3.2.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2"
+  },
+  "dependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-script": "^2.0.5",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.13",
+    "sqlite3": "^4.1.0",
+    "typeorm": "^0.2.20"
+  },
+  "build": {
+    "productName": "sample",
+    "appId": "sample",
+    "win": {
+      "target": "nsis",
+      "extraFiles": [
+        {
+          "from": "sample.sqlite",
+          "to": ""
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "electronWebpack": {
+    "commonSourceDirectory": "src/common",
+    "title": true,
+    "main": {
+      "sourceDirectory": "src/main"
+    },
+    "renderer": {
+      "sourceDirectory": "src/renderer",
+      "template": "src/renderer/index.html"
+    }
+  }
+}
